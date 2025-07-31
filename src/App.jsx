@@ -1,9 +1,15 @@
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { FaShoppingCart, FaSearch, FaUser, FaHome, FaQuestionCircle } from "react-icons/fa";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import FAQ from "./pages/Faq";
 
 export default function App() {
   return (
-    <div className="flex justify-center w-full h-auto bg-red-500">
-      <div className="flex justify-center items-center w-[80%] h-20 bg-blue-500">
+    <Router>
+   <>
+       <div className="flex justify-center w-full h-auto bg-black">
+      <div className="flex justify-center items-center w-[80%] h-20">
         <div className="flex items-center justify-between w-full px-4">
           <div className="flex items-center gap-40">
           <h1 className="flex items-center gap-2 text-white font-bold text-xl cursor-pointer">
@@ -18,19 +24,27 @@ export default function App() {
           </div>
           <ul className="flex gap-x-20 text-white text-lg pr-4">
             <li className="text-2xl cursor-pointer hover:text-yellow-300 transition">
-              <FaHome />
+            <Link to="/"><FaHome /></Link>
             </li>
             <li className="text-2xl cursor-pointer hover:text-yellow-300 transition">
-              <FaUser />
+            <Link to="/profile"><FaUser /></Link>
             </li>
             <li className="text-2xl cursor-pointer hover:text-yellow-300 transition">
-              <FaQuestionCircle />
+            <Link to="/faq"><FaQuestionCircle /></Link>
             </li>
           </ul>
 
         </div>
       </div>
     </div>
+    <div></div>
+   </>
+   <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/faq" element={<FAQ />} />
+      </Routes>
+   </Router>
   );
 }
 
